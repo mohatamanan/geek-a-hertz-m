@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Poetsen+One&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-image: url('bg.gif');
+        /* background-repeat: no-repeat; */
+        background-size: contain;
+        background-blend-mode: overlay;
+        /* background-color: black; */
+        /* filter: brightness(50%); */
+        font-family: "Parkinsans", sans-serif;
+    }
+
+    .sign-log {
+        font-family: inherit;
+        justify-content: center;
+        transition: 0.75s ease all;
+        align-items: center;
+        display: flex;
+        /* filter: blur(8px); */
+        background-color: rgb(38, 38, 38);
+        width: 22%;
+        /* margin-top: 500px; */
+        padding-bottom: 2%;
+        border-radius: 15px;
+        margin: auto;
+        margin-top: 5%;
+        padding-bottom: 2%;
+        flex-direction: column;
+        /* font-family: Roboto; */
+        font-weight: 400;
+        color: white;
+        border: 2px solid white;
+
+        gap: 10px;
+
+    }
+
+    .sign-log:hover {
+        box-shadow: 0 0 15px white;
+    }
+
+    .signColumn {
+        border-top-left-radius: 15px;
+        border-right: solid 1px white;
+    }
+
+    .logColumn {
+        border-top-right-radius: 15px;
+    }
+
+    .signLogColumn {
+        cursor: pointer;
+        transition: 0.5s ease all;
+        display: flex;
+        /* background-color: red; */
+        width: 100%;
+        /* font-family: sans-serif; */
+        border-bottom: 1px solid white;
+        justify-content: center;
+
+        /* border-radius: 15px; */
+
+        & .slcItem {
+            /* border-radius: inherit; */
+            background-color: rgb(26, 26, 26);
+            width: 50%;
+            text-align: center;
+            padding: 3%;
+            transition: inherit;
+            /* border: 1px solid; */
+        }
+    }
+
+    input {
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        padding: 1%;
+        border-bottom: 5px solid grey;
+        transition: 0.5s all ease;
+    }
+
+    .emailLabel,
+    .pwdLabel {
+        font-size: 110%;
+    }
+
+    #submitSign,
+    #signBtn {
+        cursor: pointer;
+        display: flex;
+        background-color: black;
+        border: 2px solid white;
+        padding: 3%;
+        gap: 4%;
+        width: 70%;
+        border-radius: 50px;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        /* transition: 0.75s ease all; */
+        font-family: "Parkinsans", sans-serif;
+    }
+
+
+    /* .signColumn:focus{color: red;} */
+
+    input:hover {
+        border-bottom: 5px solid red;
+    }
+
+    #submitSign:hover,
+    #signBtn:hover {
+        background-color: rgb(18, 18, 18);
+        /* color: black; */
+    }
+
+    .signInGoogle {
+        cursor: pointer;
+        display: flex;
+        background-color: black;
+        border: 2px solid white;
+        padding: 3%;
+        gap: 4%;
+        width: 70%;
+        border-radius: 50px;
+        align-items: center;
+        justify-content: center;
+        font-size: 80%;
+
+        & img {
+            height: 20px;
+        }
+
+        /* & #or{font-size: 1px;} */
+    }
+
+    .signInGoogle:hover {
+        background-color: rgb(32, 32, 32);
+    }
+
+    #or {
+        font-size: 80%;
+    }
+
+    .errorP {
+        color: red;
+        font-size: 70%;
+        margin-top: 3%;
+    }
+
+    .uploadApparatus {
+        /* background-color: yellow; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        gap: 8px;
+        margin-top: 2%;
+    }
+
+    #fileInput {
+        /* background-color: green; */
+        display: none;
+    }
+
+    .chooseBtn {
+        border: none;
+        cursor: pointer;
+        background-color: rgb(38, 38, 38);
+        color: white;
+        /* border: 5px solid blue; */
+        padding: 1% 2%;
+        font-size: 150%;
+        border-radius: 15px;
+        font-weight: 900;
+        font-family: "Parkinsans", sans-serif;
+    }
+
+    #uploadButton {
+        border: none;
+        /* cursor: pointer; */
+        background-color: rgb(38, 38, 38);
+        /* border: 5px solid rgb(38, 38, 38); */
+        opacity: 50%;
+        color: white;
+        padding: 1% 2%;
+        font-size: 150%;
+        border-radius: 15px;
+        font-weight: 900;
+        font-family: "Parkinsans", sans-serif;
+        /* width: 50%; */
+    }
+
+    .activeBtn {
+        background-color: rgb(38, 38, 38);
+        opacity: 1;
+    }
+
+    .heading,
+    .subheading {
+        text-align: center;
+        /* font-size: ; */
+        color: rgb(155, 148, 255);
+    }
+
+    .heading {
+        font-size: 3em;
+    }
+
+    .subheading {
+        color: rgb(207, 204, 255);
+    }
+
+    .uploadList{
+        background-color: rgb(38,38,38);
+        color: white;
+        margin: auto;
+        border: 3px solid black;
+        gap: 0;
+        padding: 0.5%;
+        width: 50%;
+        text-align: center;
+        margin-top: 2%;
+
+        & td{
+            padding: 2px;
+            border: 3px solid black;
+        }
+    }
+
+    .headT{
+        background-color: gray;
+        color: black;
+        font-weight: 900;
+    }
+
+    .accBtn{
+        background-color: red;
+        width: fit-content;
+        margin: auto;
+        padding: 1% 2.5%;
+        color: white;
+        font-weight: 900;
+        margin-top: 2%;
+        cursor: pointer;
+        border-radius: 50px;
+        
+    }
+</style>
+
+<body>
+    <h1 class="heading">Kloud9 Storage</h1>
+    <h4 class="subheading">Upload your files. Store them. Retrieve them.</h4>
+    <div class="sign-log">
+        <div class="signLogColumn">
+            <div class="signColumn slcItem">Sign Up</div>
+            <div class="logColumn slcItem">Login</div>
+        </div>
+
+        <!-- ⚠︎ -->
+        <p class="emailLabel">Enter Email: </p>
+        <input type="email" name="" id="emailInp">
+        <p class="pwdLabel">Enter Password: </p>
+        <input type="password" name="" id="pwdInp">
+
+        <button id="submitSign">Create Account</button>
+        <button id="signBtn">Log-in!</button>
+
+        <center>
+            <p id="or">or</p>
+        </center>
+        <div class="signInGoogle">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png"
+                alt="">
+            <p>Sign In With Google</p>
+        </div>
+    </div>
+
+    <center>
+        <p class="errorP"></p>
+    </center>
+
+
+    <div class="uploadApparatus">
+        <button class="chooseBtn">Choose File 📤</button>
+
+        <input type="file" id="fileInput" />
+
+        <button id="uploadButton">Upload File</button>
+        <p id="status"></p>
+
+        
+    </div>
+
+    <table class="uploadList">
+        <tr class="headT">
+            <td>File Name</td>
+            <td>File Size</td>
+            <td>Date Of Upload</td>
+            <td>Download</td>
+            <td>Delete</td>
+        </tr>
+        <tr>
+            <td>File Name</td>
+            <td>File Size</td>
+            <td>Date Of Upload</td>
+            <td>Download</td>
+            <td>Delete</td>
+        </tr>
+    </table>
+
+    <div class="accBtn">
+        <p>🛠 Account Settings </p>
+    </div>
+    <!-- <p id="Shh">d</p> -->
+
+
+
+    <script src="app.js" type="module"></script>
+
+    <script>
+        document.getElementsByClassName('chooseBtn')[0].addEventListener('click', () => {
+
+            document.getElementById('uploadButton').style.backgroundColor = "rgb(38,38,38)";
+            document.getElementById('uploadButton').style.opacity = 1;
+            // document.getElementsByClassName('chooseBtn')[0].style.backgroundColor = "rgb(38,38,38)";
+
+            document.getElementById('fileInput').click();
+            // document.getElementsByClassName('uploadButton')[0].style.opacity = 0.3;
+
+        })
+        document.getElementById('submitSign').style.display = "none";
+        document.getElementsByClassName('signColumn')[0].style.filter = "blur(3px)";
+
+        document.getElementsByClassName('signColumn')[0].addEventListener('click', () => {
+            document.getElementById('submitSign').style.display = "block";
+            document.getElementById('signBtn').style.display = "none";
+            document.getElementsByClassName('logColumn')[0].style.filter = "blur(3px)";
+            document.getElementsByClassName('signColumn')[0].style.filter = "blur(0)";
+        })
+
+        document.getElementsByClassName('logColumn')[0].addEventListener('click', () => {
+            document.getElementById('submitSign').style.display = "none";
+            document.getElementById('signBtn').style.display = "block";
+            document.getElementsByClassName('logColumn')[0].style.filter = "blur(0)";
+            document.getElementsByClassName('signColumn')[0].style.filter = "blur(3px)";
+        })
+    </script>
+</body>
+
+</html>

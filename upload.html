@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="fileInput" />
+    <button id="uploadButton">Upload File</button>
+    <p id="status"></p>
+    <p id="Shh">d</p>
+
+    <script src="https://gstatic.com/firebasejs/11.0.2/firebase-storage.js"></script>
+
+    <script>
+        let uid = localStorage.getItem("userID");
+        const storage = getStorage();
+        localStorage.clear();
+
+        document.getElementById("uploadButton").addEventListener("click", () => {
+            const file = document.getElementById("fileInput").files[0];
+
+            if (!file) {
+                alert("Please select a file first.");
+                return;
+            }
+            const filePath = `${uid}/${file.name}`;
+            const storageRef = ref(storage, filePath);
+
+            // Upload the file
+            uploadBytes(storageRef, file)
+                .then((snapshot) => {
+                    // File uploaded successfully
+                    console.log('Uploaded file', snapshot);
+                })
+                .catch((error) => {
+                    // Handle errors
+                    console.error('Error uploading file', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
